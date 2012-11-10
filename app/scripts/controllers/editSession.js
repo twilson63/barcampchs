@@ -1,3 +1,3 @@
-app.controller('EditSession', function($scope) {
+app.controller('EditSession', function($scope, $routeParams, Session, $location) {
   
 });

@@ -9,7 +9,7 @@ var app = angular.module('barcampchs', [])
         { 
           controller: 'AddSession', 
           templateUrl: '/app/views/session.html' })
-      .when('/vote', 
+      .when('/vote/:id', 
         { 
           controller: 'Vote', 
           templateUrl: '/app/views/vote.html' })
