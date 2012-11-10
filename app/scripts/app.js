@@ -1,4 +1,4 @@
-var app = angular.module('barcampchs', [])
+var app = angular.module('barcampchs', ['ngResource'])
   .config(function($routeProvider){
     $routeProvider
       .when('/', 

@@ -1,9 +1,16 @@
 app.controller('Vote', function($scope, $routeParams, Session, $location) {
-  Session.get($routeParams.id, function(err, session){
-    $scope.session = session;
+  var self = this;
+
+  Session.get({id: $routeParams.id}, function(session) {
+    self.original = session;
+    $scope.session = new Session(self.original);
   });
+
   $scope.vote = function() {
-    Session.vote($scope.session, $scope.user);
-    $location.path('/');
+    $scope.session.voters.push($scope.user);
+    console.log($scope.session);
+    $scope.session.update(user, function() {
+      $location.path('/');
+    });
   }
 });
