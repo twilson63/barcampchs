@@ -1,18 +1,18 @@
 <div class="container">
 <table class="table">
   <tr>
-    <th>Vote</th>
     <th>Session</th>
     <th>Presenter</th>
     <th>Votes</th>
+    <th>Vote</th>
     <th><a href="#/new"><i class="icon-plus"></i></a></th>
   </tr>
-  <tr>
-    <td><a href="#/vote"><i class="icon-thumbs-up"></i></a></td>
-    <td>AngularJS</td>
-    <td>Tom Wilson</td>
-    <td>100</td>
-    <td><a href="#/edit/1"><i class="icon-pencil"></i></a></td>
+  <tr ng-repeat="session in sessions">
+    <td>{{session.name}}</td>
+    <td>{{session.presenter}}</td>
+    <td>{{session.voters.length}}</td>
+    <td><a href="#/vote/{{session.id}}"><i class="icon-thumbs-up"></i></a></td>
+    <td><a href="#/edit/{{session.id}}"><i class="icon-pencil"></i></a></td>
   </tr>
 </table>
 </div>

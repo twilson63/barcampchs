@@ -1,3 +1,3 @@
-app.controller('Index', function($scope) {
-  
+app.controller('Index', function($scope, Session) {
+  $scope.sessions = Session.all;
 });
