@@ -14,8 +14,15 @@ app.factory('Session', function(){
     },
     get: function(id, cb) {
       for(var i = 0; i < sessions.length; i++) {
-        console.log(sessions[i].id);
         cb(null, sessions[i] );
+      }
+    },
+    save: function(id, session, cb) {
+      for(var i = 0; i < sessions.length; i++) {
+        if(sessions[i].id === session.id){
+          sessions[i] = session;
+          cb(null);
+        }
       }
     }
   }

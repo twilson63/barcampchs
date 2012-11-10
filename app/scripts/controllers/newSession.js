@@ -1,5 +1,5 @@
 app.controller('AddSession', function($scope, Session, $location) {
-  $scope.addSession = function() {
+  $scope.save = function() {
     Session.add($scope.session);
     $location.path('/');
   }

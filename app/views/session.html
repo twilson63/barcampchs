@@ -1,13 +1,13 @@
 <div class="container">
 <form class="offset1 span8">
-  <legend>Add New Session</legend>
+  <legend>Add/Edit Session</legend>
   <label>Session</label>
   <input type="text" ng-model="session.name"></input>
 
   <label>Presenter</label>
   <input type="text" ng-model="session.presenter"></input>
   <p style="margin-top: 20px;">
-  <button class="btn btn-primary" ng-click="addSession()">Create</button>
+  <button class="btn btn-primary" ng-click="save()">Create</button>
   <a href="/" class="btn">Cancel</a>
   </p>
 </form>
