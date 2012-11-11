@@ -1,4 +1,5 @@
 <div class="container">
+<input type="search" ng-model="search"></input>
 <table class="table">
   <tr>
     <th>Session</th>
@@ -7,7 +8,7 @@
     <th>Vote</th>
     <th><a href="#/new"><i class="icon-plus"></i></a></th>
   </tr>
-  <tr ng-repeat="session in sessions">
+  <tr ng-repeat="session in sessions | filter :search">
     <td>{{session.name}}</td>
     <td>{{session.presenter}}</td>
     <td>{{session.voters.length}}</td>

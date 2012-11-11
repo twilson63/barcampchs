@@ -1,3 +1,5 @@
 app.controller('Index', function($scope, Session) {
-  $scope.sessions = Session.query();
+  Session.all(function(sessions){
+    $scope.sessions = sessions;
+  });
 });

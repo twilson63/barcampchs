@@ -1,8 +1,7 @@
 app.controller('EditSession', function($scope, $routeParams, Session, $location) {
   var self = this;
   $scope.buttonName = 'Update';
-  Session.get({id: $routeParams.id}, function(session) {
-    console.log(session);
+  Session.getById($routeParams.id, function(session) {
     self.original = session;
     $scope.session = new Session(self.original);
   });
@@ -12,13 +11,13 @@ app.controller('EditSession', function($scope, $routeParams, Session, $location)
   }
 
   $scope.destroy = function() {
-    self.original.destroy(function() {
+    self.original.$remove(function() {
       $location.path('/');
     });
   };
 
   $scope.save = function() {
-    $scope.session.update(function() {
+    $scope.session.$update(function() {
       $location.path('/');
     });
   };

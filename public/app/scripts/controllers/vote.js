@@ -1,16 +1,29 @@
-app.controller('Vote', function($scope, $routeParams, Session, $location) {
+app.controller('Vote', function($scope, $routeParams, Session, User, $location) {
   var self = this;
+  var addUser = function(data, cb) {
+    var user = new User(data);
+    user.$save(cb);
+  };
 
-  Session.get({id: $routeParams.id}, function(session) {
+  var addVote = function() {
+    $scope.session.voters.push($scope.user);
+    $scope.session.$update(function() {
+      $location.path('/');
+    });
+  };
+
+  Session.getById($routeParams.id, function(session) {
     self.original = session;
     $scope.session = new Session(self.original);
   });
 
   $scope.vote = function() {
-    $scope.session.voters.push($scope.user);
-    console.log($scope.session);
-    $scope.session.update(user, function() {
-      $location.path('/');
+    User.query({ name: $scope.user }, function(users) {
+      if (users.length < 1) {
+        addUser({name: $scope.user}, addVote);
+      } else {
+        $scope.message = "I am sorry you have already voted!";
+      }
     });
   }
 });
