@@ -1,19 +1,18 @@
 <div class="container">
 <input type="search" ng-model="search"></input>
+<a href="#/new" class="btn btn-primary"><i class="icon-plus"></i></a>
 <table class="table">
   <tr>
     <th>Session</th>
     <th>Presenter</th>
     <th>Votes</th>
     <th>Vote</th>
-    <th><a href="#/new"><i class="icon-plus"></i></a></th>
   </tr>
   <tr ng-repeat="session in sessions | filter :search">
-    <td>{{session.name}}</td>
+    <td>{{session.name}}&nbsp;<a href="#/edit/{{session._id.$oid}}"><i class="icon-pencil"></i></a></td>
     <td>{{session.presenter}}</td>
     <td>{{session.voters.length}}</td>
     <td><a href="#/vote/{{session._id.$oid}}"><i class="icon-thumbs-up"></i></a></td>
-    <td><a href="#/edit/{{session._id.$oid}}"><i class="icon-pencil"></i></a></td>
   </tr>
 </table>
 </div>
