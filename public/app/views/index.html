@@ -1,6 +1,8 @@
 <div class="container">
-<input type="search" ng-model="search"></input>
+<form class="form-inline pull-right">
+<input type="search" ng-model="search" placeholder="search"></input>
 <a href="#/new" class="btn btn-primary"><i class="icon-plus"></i></a>
+</form>
 <table class="table">
   <tr>
     <th>Session</th>
@@ -8,7 +10,7 @@
     <th>Votes</th>
     <th>Vote</th>
   </tr>
-  <tr ng-repeat="session in sessions | filter :search">
+  <tr ng-repeat="session in sessions | filter :search | orderBy: '-voters.length' | orderBy: name">
     <td>{{session.name}}&nbsp;<a href="#/edit/{{session._id.$oid}}"><i class="icon-pencil"></i></a></td>
     <td>{{session.presenter}}</td>
     <td>{{session.voters.length}}</td>
